@@ -109,12 +109,13 @@ contract TSwapPool is ERC20 {
     /// user is going to deposit, but set a minimum so they know approx what they will accept
     /// @param maximumPoolTokensToDeposit The maximum amount of pool tokens the user is willing to deposit, again it's
     /// derived from the amount of WETH the user is going to deposit
-    /// @param deadline The deadline for the transaction to be completed by
+    /// param deadline The deadline for the transaction to be completed by  // #a unused param
     function deposit(
         uint256 wethToDeposit,
         uint256 minimumLiquidityTokensToMint,
-        uint256 maximumPoolTokensToDeposit,
-        uint64 deadline
+        uint256 maximumPoolTokensToDeposit/*,
+        uint64 deadline // #a unused param
+        */
     )
         external
         revertIfZero(wethToDeposit)
@@ -128,7 +129,7 @@ contract TSwapPool is ERC20 {
         }
         if (totalLiquidityTokenSupply() > 0) {
             uint256 wethReserves = i_wethToken.balanceOf(address(this));
-            uint256 poolTokenReserves = i_poolToken.balanceOf(address(this));
+            //uint256 poolTokenReserves = i_poolToken.balanceOf(address(this)); // #a unused var
             // Our invariant says weth, poolTokens, and liquidity tokens must always have the same ratio after the
             // initial deposit
             // poolTokens / constant(k) = weth
@@ -305,7 +306,7 @@ contract TSwapPool is ERC20 {
         public
         revertIfZero(inputAmount)
         revertIfDeadlinePassed(deadline)
-        returns (uint256 output)
+        //returns (uint256 output)  // #a unused param
     {
         uint256 inputReserves = inputToken.balanceOf(address(this));
         uint256 outputReserves = outputToken.balanceOf(address(this));

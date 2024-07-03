@@ -30,7 +30,7 @@ contract TSwapPoolTest is Test {
         vm.startPrank(liquidityProvider);
         weth.approve(address(pool), 100e18);
         poolToken.approve(address(pool), 100e18);
-        pool.deposit(100e18, 100e18, 100e18, uint64(block.timestamp));
+        pool.deposit(100e18, 100e18, 100e18/*, uint64(block.timestamp)*/);  // #a unused param removed from function defn
 
         assertEq(pool.balanceOf(liquidityProvider), 100e18);
         assertEq(weth.balanceOf(liquidityProvider), 100e18);
@@ -44,7 +44,7 @@ contract TSwapPoolTest is Test {
         vm.startPrank(liquidityProvider);
         weth.approve(address(pool), 100e18);
         poolToken.approve(address(pool), 100e18);
-        pool.deposit(100e18, 100e18, 100e18, uint64(block.timestamp));
+        pool.deposit(100e18, 100e18, 100e18/*, uint64(block.timestamp)*/);  // #a unused param removed from function defn
         vm.stopPrank();
 
         vm.startPrank(user);
@@ -62,7 +62,7 @@ contract TSwapPoolTest is Test {
         vm.startPrank(liquidityProvider);
         weth.approve(address(pool), 100e18);
         poolToken.approve(address(pool), 100e18);
-        pool.deposit(100e18, 100e18, 100e18, uint64(block.timestamp));
+        pool.deposit(100e18, 100e18, 100e18/*, uint64(block.timestamp)*/);  // #a unused param removed from function defn
 
         pool.approve(address(pool), 100e18);
         pool.withdraw(100e18, 100e18, 100e18, uint64(block.timestamp));
@@ -76,7 +76,7 @@ contract TSwapPoolTest is Test {
         vm.startPrank(liquidityProvider);
         weth.approve(address(pool), 100e18);
         poolToken.approve(address(pool), 100e18);
-        pool.deposit(100e18, 100e18, 100e18, uint64(block.timestamp));
+        pool.deposit(100e18, 100e18, 100e18/*, uint64(block.timestamp)*/);  // #a unused param removed from function defn
         vm.stopPrank();
 
         vm.startPrank(user);
